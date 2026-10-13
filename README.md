@@ -1,4 +1,4 @@
-# 赛博女友 · 小满
+# cyber-girl · 小满
 
 深色人物背景的中文 AI 陪伴应用，界面参考用户提供的图片。
 本地语音模式链路为 **Silero VAD v5 → Whisper → MiniMax 国内站 API → Qwen3-TTS → MuseTalk 1.5 / Vidu S2**。

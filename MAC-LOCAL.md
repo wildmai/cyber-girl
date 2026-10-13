@@ -16,8 +16,8 @@
 ```bash
 brew install gh
 gh auth login
-gh repo clone 189-sketch/saibogirl
-cd saibogirl
+gh repo clone 189-sketch/cyber-girl
+cd cyber-girl
 bash scripts/setup-mac.command
 ./start-mac.command
 ```
