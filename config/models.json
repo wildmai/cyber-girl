@@ -1,0 +1,80 @@
+{
+  "budget_gib": 15,
+  "reserve_gib": 1.5,
+  "device": "auto",
+  "selected": {
+    "vad": "silero-v5",
+    "stt": "whisper-base",
+    "llm": "minimax-m27",
+    "tts": "qwen3-tts-06b"
+  },
+  "models": [
+    {
+      "id": "silero-v5",
+      "stage": "vad",
+      "name": "Silero VAD v5",
+      "detail": "语音活动检测 · 16 kHz",
+      "path": "models/silero-v5/silero_vad.jit",
+      "vram_gib": 0.1
+    },
+    {
+      "id": "whisper-base",
+      "stage": "stt",
+      "name": "Whisper base",
+      "detail": "74M · 多语言",
+      "path": "models/whisper/base.pt",
+      "vram_gib": 0.8
+    },
+    {
+      "id": "whisper-small",
+      "stage": "stt",
+      "name": "Whisper small",
+      "detail": "244M · 更高识别精度",
+      "path": "models/whisper/small.pt",
+      "vram_gib": 1.8
+    },
+    {
+      "id": "minimax-m27",
+      "stage": "llm",
+      "backend": "minimax",
+      "model": "MiniMax-M2.7",
+      "name": "MiniMax M2.7",
+      "detail": "官方 API · 对话文本发送至 MiniMax",
+      "vram_gib": 0
+    },
+    {
+      "id": "minimax-m27-fast",
+      "stage": "llm",
+      "backend": "minimax",
+      "model": "MiniMax-M2.7-highspeed",
+      "name": "MiniMax M2.7 highspeed",
+      "detail": "官方 API · 高速响应",
+      "vram_gib": 0
+    },
+    {
+      "id": "qwen35-9b-local",
+      "stage": "llm",
+      "backend": "llama.cpp",
+      "name": "Qwen3.5 9B · 本地",
+      "detail": "Uncensored Aggressive · Q4_K_M · llama.cpp",
+      "path": "models/llm/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf",
+      "vram_gib": 6.5
+    },
+    {
+      "id": "qwen3-tts-06b",
+      "stage": "tts",
+      "name": "Qwen3-TTS 0.6B",
+      "detail": "CustomVoice · 轻量自然语音",
+      "path": "models/Qwen3-TTS-12Hz-0.6B-CustomVoice",
+      "vram_gib": 3.2
+    },
+    {
+      "id": "qwen3-tts-17b",
+      "stage": "tts",
+      "name": "Qwen3-TTS 1.7B",
+      "detail": "CustomVoice · 丰富情感表达",
+      "path": "models/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "vram_gib": 5.2
+    }
+  ]
+}

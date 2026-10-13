@@ -1,0 +1,38 @@
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+server {
+    listen 80;
+    server_name 150.158.124.148;
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        default_type text/plain;
+    }
+    location / {
+        return 301 https://150.158.124.148$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name 150.158.124.148;
+    ssl_certificate /etc/letsencrypt/live/xiaoman-ip/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/xiaoman-ip/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    client_max_body_size 10m;
+
+    location / {
+        resolver 127.0.0.11 valid=30s ipv6=off;
+        set $app_backend xiaoman:7860;
+        proxy_pass http://$app_backend;
+        proxy_http_version 1.1;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_read_timeout 600s;
+        proxy_buffering off;
+    }
+}

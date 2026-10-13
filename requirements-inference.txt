@@ -1,0 +1,8 @@
+-r requirements.txt
+# Install matching CUDA torch and torchaudio builds first; see README.
+torch==2.6.0
+torchaudio==2.6.0
+openai-whisper==20250625
+qwen-tts==0.1.1
+# Qwen imports Gradio; keep it compatible with the app's Starlette version.
+gradio==5.24.0

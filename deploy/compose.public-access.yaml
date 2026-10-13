@@ -1,0 +1,9 @@
+services:
+  xiaoman:
+    environment:
+      SAIBOGIRL_ALLOWED_HOSTS: "*"
+    volumes:
+      - type: bind
+        source: ./public-access-fix/deployment.py
+        target: /opt/xiaoman/app/deployment.py
+        read_only: true

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b0e">
+  <meta name="description" content="本地语音处理，在线智能对话。小满，听你说，陪你聊。">
+  <title>赛博女友 · 小满</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css?v=persona1">
+  <script src="/app.js?v=sessions1" type="module"></script>
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></symbol>
+    <symbol id="i-muted" viewBox="0 0 24 24"><path d="m3 3 18 18M9 9v3a3 3 0 0 0 5 2M9 5a3 3 0 0 1 6 0v6M5 10v2a7 7 0 0 0 12 5M19 10v2M12 19v3M8 22h8"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2V11.5A8.5 8.5 0 0 1 10.5 3h2a8.5 8.5 0 0 1 8.5 8.5Z"/><path d="M7 9h10M7 13h6"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 3-.6 2.2-2 .9-2.1-.6-2 3.5 1.5 1.6v2.8L2.3 15l2 3.5 2.1-.6 2 .9L9 21h4l.6-2.2 2-.9 2.1.6 2-3.5-1.5-1.6v-2.8L19.7 9l-2-3.5-2.1.6-2-.9L13 3Z"/><circle cx="11" cy="12" r="3"/></symbol>
+    <symbol id="i-model" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8l10-5ZM2 12l10 5 10-5M2 16l10 5 10-5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 15h10"/></symbol>
+    <symbol id="i-volume" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5V4ZM15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6 6a8 8 0 0 1 13 2M18 18a8 8 0 0 1-13-2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/></symbol>
+  </svg>
+
+  <main class="scene">
+    <div class="portrait" aria-hidden="true"><img id="portrait" src="/assets/xiaoman.png" alt=""><video id="avatar-video" playsinline preload="auto"></video><div id="vidu-view"></div></div>
+    <div class="scene-shade" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="header">
+      <a href="/" class="brand" aria-label="赛博女友首页">
+        <span class="brand-name">赛博女友<span class="brand-dot"></span></span>
+        <span class="brand-subtitle">此刻，只听你说。</span>
+      </a>
+      <div class="header-right">
+        <span class="offline-badge"><span></span>本地语音</span>
+        <div class="toolbar" aria-label="工具栏">
+          <button class="icon-button" id="models-button" title="模型与连接" aria-label="模型与连接"><svg><use href="#i-model"/></svg></button>
+          <button class="icon-button" id="history-button" title="聊天记录" aria-label="聊天记录"><svg><use href="#i-chat"/></svg></button>
+          <span class="toolbar-divider"></span>
+          <button class="icon-button" id="settings-button" title="偏好设置" aria-label="偏好设置"><svg><use href="#i-settings"/></svg></button>
+        </div>
+      </div>
+    </header>
+
+    <section class="companion-space" aria-label="与小满对话">
+      <div class="introduction">
+        <div class="eyebrow"><span class="tiny-line"></span> YOUR PRIVATE LITTLE WORLD</div>
+        <div class="name-row"><h1>小满</h1><span class="presence"><span></span>在这里，陪着你</span></div>
+        <p class="intro-text">把今天的心事，<br>慢慢说给我听。</p>
+        <p class="intro-caption">无需去远方，我们就在此刻相遇。</p>
+      </div>
+
+      <div class="voice-space">
+        <div class="voice-controls">
+          <button id="mic-button" class="round-button" aria-label="开启麦克风" title="开启麦克风" aria-pressed="false"><svg><use href="#i-mic"/></svg></button>
+          <button id="voice-orb" class="voice-orb" aria-label="开始语音对话">
+            <span class="orb-halo"></span><span class="orb-orbit"></span><span class="orb-core"></span>
+            <span class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="orb-label" id="orb-label">开始对话</span>
+          </button>
+          <button id="stop-button" class="round-button stop-button" aria-label="停止回复" title="停止回复"><span></span></button>
+        </div>
+        <div class="voice-status"><span class="state-dot" id="state-dot"></span><span id="state-label">准备好时，轻触声球</span></div>
+        <p class="voice-hint" id="voice-hint">语音在本地处理，小满在这里回应你</p>
+      </div>
+
+      <div class="conversation-caption" aria-live="polite" aria-atomic="true">
+        <span class="caption-name" id="caption-name">小满</span>
+        <p id="caption-text">今天过得怎么样？</p>
+      </div>
+
+      <form class="composer" id="composer">
+        <svg class="composer-icon"><use href="#i-keyboard"/></svg>
+        <input id="message-input" placeholder="也可以打字，告诉我…" aria-label="输入消息" maxlength="2000" autocomplete="off">
+        <span class="composer-shortcut">Enter</span>
+        <button type="submit" id="send-button" aria-label="发送消息" title="发送消息"><svg><use href="#i-arrow"/></svg></button>
+      </form>
+      <div class="model-strip" id="model-strip" aria-label="模型状态">
+        <button data-model-stage="vad"><span></span>Silero VAD <small>v5</small></button>
+        <span class="model-connector"></span>
+        <button data-model-stage="stt"><span></span>Whisper</button>
+        <span class="model-connector"></span>
+        <button data-model-stage="llm"><span></span>对话模型 <small>API</small></button>
+        <span class="model-connector"></span>
+        <button data-model-stage="tts"><span></span>Qwen3-TTS</button>
+      </div>
+    </section>
+
+    <div class="portrait-note" aria-hidden="true"><span class="note-line"></span><span>不必完美<br>做你自己就好</span></div>
+    <footer class="footer">
+      <span class="privacy-note"><svg><use href="#i-shield"/></svg> 音频留在本地 · 对话文本联网处理</span>
+      <button id="memory-button" class="memory-summary"><span></span><span id="memory-label">正在检查本地环境</span><svg><use href="#i-arrow"/></svg></button>
+      <span class="footer-name">WITH YOU, HERE.</span>
+    </footer>
+  </main>
+
+  <dialog id="drawer" class="drawer" aria-labelledby="drawer-title">
+    <div class="drawer-header"><div><span class="drawer-eyebrow" id="drawer-eyebrow">LOCAL WORKSPACE</span><h2 id="drawer-title">本地模型</h2></div><button id="close-drawer" class="icon-button" aria-label="关闭侧栏"><svg><use href="#i-close"/></svg></button></div>
+    <div class="drawer-content" id="drawer-content"></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" hidden><svg><use href="#i-shield"/></svg><span id="toast-text"></span><button id="toast-close" aria-label="关闭提示"><svg><use href="#i-close"/></svg></button></div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+[Unit]
+Description=Renew Xiaoman IP HTTPS certificate and reload Nginx
+Requires=docker.service
+After=docker.service network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /opt/saibo/xiaoman-linux/deploy/ip-https/renew.sh
+TimeoutStartSec=600

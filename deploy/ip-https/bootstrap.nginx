@@ -1,0 +1,12 @@
+server {
+    listen 80;
+    server_name 150.158.124.148;
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        default_type text/plain;
+    }
+    location / {
+        return 200 "HTTPS certificate setup in progress.\n";
+        add_header Content-Type text/plain;
+    }
+}

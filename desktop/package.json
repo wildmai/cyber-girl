@@ -1,0 +1,19 @@
+{
+  "name": "xiaoman-desktop",
+  "productName": "小满",
+  "version": "1.0.0",
+  "private": true,
+  "description": "小满 AI 陪伴桌面版",
+  "author": "",
+  "main": "main.cjs",
+  "scripts": {
+    "postinstall": "install-electron",
+    "start": "electron .",
+    "build": "node build.cjs",
+    "test": "node --test backend.test.cjs main.test.cjs"
+  },
+  "devDependencies": {
+    "@electron/packager": "20.3.0",
+    "electron": "44.7.0"
+  }
+}

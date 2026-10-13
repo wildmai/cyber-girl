@@ -1,0 +1,33 @@
+services:
+  xiaoman:
+    environment:
+      SAIBOGIRL_PUBLIC_ORIGIN: https://150.158.124.148
+      SAIBOGIRL_MAX_DIALOGUES: "8"
+      SAIBOGIRL_MAX_AVATARS: "3"
+    volumes:
+      - ./web:/opt/xiaoman/web:ro
+      - ./app:/opt/xiaoman/app:ro
+
+  nginx:
+    image: nginx:stable-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/ip-https/nginx:/etc/nginx/conf.d:ro
+      - ./deploy/ip-https/certificates:/etc/letsencrypt:ro
+      - ./deploy/ip-https/webroot:/var/www/certbot:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  certbot:
+    image: certbot/certbot:v5.8.0@sha256:f70ad0adbb7e117f0fe42a63c553f28ea451edabc0148757b6efcd9735acaa20
+    profiles: [tools]
+    volumes:
+      - ./deploy/ip-https/certificates:/etc/letsencrypt
+      - ./deploy/ip-https/webroot:/var/www/certbot
+      - ./deploy/ip-https/certbot-logs:/var/log/letsencrypt

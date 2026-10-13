@@ -1,0 +1,33 @@
+services:
+  xiaoman:
+    build: .
+    image: xiaoman:linux-cpu
+    restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:7860:7860"
+    environment:
+      MINIMAX_API_KEY: ${MINIMAX_API_KEY:?请在 .env 中配置对话服务密钥}
+      MINIMAX_BASE_URL: ${MINIMAX_BASE_URL:-https://api.minimaxi.com/v1}
+      VIDU_API_KEY: ${VIDU_API_KEY:?请在 .env 中配置实时数字人密钥}
+      SAIBOGIRL_PUBLIC_ORIGIN: ${SAIBOGIRL_PUBLIC_ORIGIN:-}
+      SAIBOGIRL_ALLOWED_HOSTS: ${SAIBOGIRL_ALLOWED_HOSTS:-}
+    volumes:
+      - ./models:/opt/xiaoman/models:ro
+      - config:/opt/xiaoman/config
+      - logs:/opt/xiaoman/logs
+      - media:/opt/xiaoman/output
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  config:
+  logs:
+  media:
