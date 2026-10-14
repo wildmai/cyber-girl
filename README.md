@@ -8,6 +8,11 @@
 新增 llama.cpp 本地后端，可加载指定 Qwen3.5-9B Q4_K_M；Mac mini 16GB 安装说明见 [MAC-LOCAL.md](MAC-LOCAL.md)。
 从 GitHub 克隆后，运行 Mac 首次安装脚本会自动准备模型；权重、密钥和个人配置不进入 Git 仓库。
 
+完整开发过程见 [详细开发教程](docs/开发教程.md) 与 [开发复盘](docs/开发复盘.md)。
+宣传片和教程片的文稿、真实界面素材、逐镜时间轴及渲染方法见 [视频工程](content/course/README.md)。
+视频工程包含豆包克隆旁白生成、按返回时间戳对齐字幕及重排画面的脚本。
+密钥和私人音色绑定只在本机传入，生成的音视频保存在忽略提交的 `output/` 目录。
+
 Linux Docker CPU 部署与压缩包启动步骤见 [LINUX-DEPLOY.md](LINUX-DEPLOY.md)。
 该部署包默认使用实时数字人模式，已附带 Silero VAD v5 与 Whisper base 权重。
 

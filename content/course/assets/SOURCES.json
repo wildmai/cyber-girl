@@ -1,0 +1,42 @@
+{
+  "created": "2026-10-14",
+  "source_commit": "3b200cf150837c41de581b9282f1fcd211b86e6f",
+  "assets": {
+    "home.png": {
+      "sha256": "5dd71a98bb1537b42251dcd4c6aff569f183ad8c4bbbd89d08083b7d71b59743",
+      "origin": "2026-10-14 浏览器实际界面采集；未调用付费会话"
+    },
+    "input.png": {
+      "sha256": "2d17d6faee03c338a6a84e089940a37bbaff2e51f27f16bb5bfda1c4806c7715",
+      "origin": "2026-10-14 浏览器实际界面采集；未调用付费会话"
+    },
+    "local-qwen.png": {
+      "sha256": "47bf387351a0778b8a01cf0982aa7cd4c4fe0b86ff6864e69b556becf3f8f593",
+      "origin": "2026-10-14 浏览器实际界面采集；未调用付费会话"
+    },
+    "models.png": {
+      "sha256": "d3e58bdb66a51b17ae8a30ce5f4484374da43a052537e976a0fa5555bf51adc7",
+      "origin": "2026-10-14 浏览器实际界面采集；未调用付费会话"
+    },
+    "musetalk.png": {
+      "sha256": "8cf5f85bc665d036b881f455defb8aaf67f00e733ea143170bac3febd57a62bb",
+      "origin": "实际产品截图，历史口型设置与字幕截图来自本次开发验收"
+    },
+    "persona.png": {
+      "sha256": "062c743f7507e1f11574d3ac89b5b593ef0fac6a5ac4725838371dfa21dd9974",
+      "origin": "2026-10-14 浏览器实际界面采集；未调用付费会话"
+    },
+    "reply.jpg": {
+      "sha256": "e0ed264fc1b0cd1e989b2a3af9f9e46d7e2d6decc180da6a3cadae6480c87d03",
+      "origin": "实际产品截图，历史口型设置与字幕截图来自本次开发验收"
+    },
+    "microphone.jpg": {
+      "sha256": "43b59d7a1eb30c7243efab0d6327a24c0a6d5afe556ccb568214cffb869c4bd8",
+      "origin": "历史服务器实际麦克风偏好设置截图；成片只取输入设备与播放设置区域"
+    },
+    "audio-wait.png": {
+      "sha256": "c157aad903ad2ff6e18f97df073b1b31ce3259f07a38d53a24709c583b1d3d65",
+      "origin": "历史实际本地TTS合成等待界面；成片裁去上下旧服务技术条"
+    }
+  }
+}
