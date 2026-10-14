@@ -6,6 +6,9 @@ models/*
 !models/.gitkeep
 logs/
 output/
+content/course/
+docs/开发教程.md
+docs/开发复盘.md
 vendor/speech-to-speech/
 vendor/MuseTalk/
 config/*.tmp
